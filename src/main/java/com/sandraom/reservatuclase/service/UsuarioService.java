@@ -35,6 +35,14 @@ public interface UsuarioService {
     Optional<Usuario> obtenerUsuarioPorId(Long id);
 
     /**
+     * Obtiene un usuario por su correo electrónico.
+     *
+     * @param email El correo electrónico del usuario.
+     * @return Un Optional que contiene el usuario si se encuentra, o vacío si no.
+     */
+    Optional<Usuario> obtenerUsuarioPorEmail(String email);
+
+    /**
      * Elimina un usuario del sistema por su ID.
      *
      * @param id El ID del usuario a eliminar.

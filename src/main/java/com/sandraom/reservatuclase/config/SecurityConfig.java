@@ -35,9 +35,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
+            .cors(cors -> cors.configure(http)) // Habilita CORS en Spring Security
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/usuarios/registro").permitAll()
+                .requestMatchers("/usuarios/me").permitAll()
                 .requestMatchers("/usuarios/**").hasRole("ADMIN")
                 .requestMatchers("/tipos-clase/**").hasRole("ADMIN")
                 .requestMatchers("/clases/**").hasAnyRole("ADMIN", "MONITOR")
@@ -94,7 +96,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry.addMapping("/**")
-                    .allowedOrigins("http://localhost") // o "http://localhost:5500" si usas Live Server
+                    .allowedOrigins("http://localhost")
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true);

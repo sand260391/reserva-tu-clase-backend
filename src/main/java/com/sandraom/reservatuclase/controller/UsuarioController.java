@@ -4,6 +4,8 @@ import com.sandraom.reservatuclase.model.Usuario;
 import com.sandraom.reservatuclase.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +49,18 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerUsuario(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.obtenerUsuarioPorId(id);
+        return usuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    /**
+     * Endpoint para obtener la información del usuario actual a partir de su JWT.
+     *
+     * @param userDetails Detalles del usuario autenticado.
+     * @return Información del usuario actual.
+     */
+    @GetMapping("/me")
+    public ResponseEntity<Usuario> obtenerUsuarioActual(@AuthenticationPrincipal UserDetails userDetails) {
+        Optional<Usuario> usuario = usuarioService.obtenerUsuarioPorEmail(userDetails.getUsername());
         return usuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 

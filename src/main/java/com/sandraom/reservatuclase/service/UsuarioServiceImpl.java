@@ -53,6 +53,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     /**
+     * Obtiene un usuario por su correo electrónico.
+     *
+     * @param email El correo electrónico del usuario.
+     * @return Un Optional que contiene el usuario si se encuentra.
+     */
+    @Override
+    public Optional<Usuario> obtenerUsuarioPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+    /**
      * Elimina un usuario por su ID.
      *
      * @param id ID del usuario a eliminar.
