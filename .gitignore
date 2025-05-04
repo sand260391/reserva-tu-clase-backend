@@ -35,3 +35,5 @@ build/
 # Archivos de entorno
 *.env
 .env
+application-gpc.properties
+reserva-service-account.json
