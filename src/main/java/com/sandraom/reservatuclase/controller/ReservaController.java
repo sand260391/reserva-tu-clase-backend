@@ -1,5 +1,7 @@
 package com.sandraom.reservatuclase.controller;
 
+import com.sandraom.reservatuclase.dto.ReservaDTO;
+import com.sandraom.reservatuclase.dto.ReservaExistenteDTO;
 import com.sandraom.reservatuclase.model.Reserva;
 import com.sandraom.reservatuclase.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,17 @@ public class ReservaController {
      * @return Lista de reservas asociadas al cliente.
      */
     @GetMapping("/cliente/{clienteId}")
-    public List<Reserva> obtenerReservasPorCliente(@PathVariable Long clienteId) {
-        return reservaService.obtenerReservasPorCliente(clienteId);
+    public List<ReservaDTO> obtenerReservasPorCliente(@PathVariable Long clienteId) {
+        return reservaService.obtenerReservasPorCliente(clienteId).stream().map(reserva -> {
+            ReservaDTO dto = new ReservaDTO();
+            dto.setId(reserva.getId());
+            dto.setClaseHoraInicio(reserva.getClase().getHoraInicio());
+            dto.setClaseHoraFin(reserva.getClase().getHoraFin());
+            dto.setClaseNombre(reserva.getClase().getNombre());
+            dto.setClaseMonitor(reserva.getClase().getMonitor());
+            dto.setTipoClaseNombre(reserva.getClase().getTipoClase().getNombre());
+            return dto;
+        }).toList();
     }
 
     /**
@@ -55,5 +66,25 @@ public class ReservaController {
     @GetMapping("/clase/{claseId}")
     public List<Reserva> obtenerReservasPorClase(@PathVariable Long claseId) {
         return reservaService.obtenerReservasPorClase(claseId);
+    }
+
+    /**
+     * Verifica si un cliente tiene una reserva para una clase específica.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId ID de la clase.
+     * @return Un objeto ReservaExistenteDTO si existe, null en caso contrario.
+     */
+    @GetMapping("/verificar")
+    public ReservaExistenteDTO verificarReserva(@RequestParam Long clienteId, @RequestParam Long claseId) {
+        Reserva reserva = reservaService.obtenerReservaPorClienteYClase(clienteId, claseId);
+        if (reserva != null) {
+            ReservaExistenteDTO dto = new ReservaExistenteDTO();
+            dto.setId(reserva.getId());
+            dto.setUsuarioId(reserva.getCliente().getId());
+            dto.setClaseId(reserva.getClase().getId());
+            return dto;
+        }
+        return null;
     }
 }

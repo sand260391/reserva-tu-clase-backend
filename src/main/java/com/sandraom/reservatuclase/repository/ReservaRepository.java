@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Repositorio para gestionar las operaciones CRUD de la entidad Reserva.
@@ -27,4 +28,22 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
      * @return una lista de reservas asociadas a la clase.
      */
     List<Reserva> findByClaseId(Long claseId);
+
+    /**
+     * Verifica si existe una reserva para un cliente y una clase específicos.
+     *
+     * @param clienteId el ID del cliente.
+     * @param claseId el ID de la clase.
+     * @return true si existe la reserva, false en caso contrario.
+     */
+    boolean existsByClienteIdAndClaseId(Long clienteId, Long claseId);
+
+    /**
+     * Encuentra una reserva específica para un cliente y una clase.
+     *
+     * @param clienteId el ID del cliente.
+     * @param claseId el ID de la clase.
+     * @return Un Optional con el objeto Reserva si existe, vacío en caso contrario.
+     */
+    Optional<Reserva> findByClienteIdAndClaseId(Long clienteId, Long claseId);
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Representa un tipo de clase (e.g., yoga, pilates).
  */
@@ -29,6 +31,7 @@ public class TipoClase {
      * Relación OneToMany con la entidad Clase.
      */
     @OneToMany(mappedBy = "tipoClase")
+    @JsonIgnore
     private List<Clase> clases;
 
     /**
@@ -36,5 +39,6 @@ public class TipoClase {
      * Relación OneToMany con la entidad Evaluacion.
      */
     @OneToMany(mappedBy = "tipoClase")
+    @JsonIgnore
     private List<Evaluacion> evaluaciones;
 }

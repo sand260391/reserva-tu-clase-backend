@@ -98,4 +98,16 @@ public class ReservaServiceImpl implements ReservaService {
     public List<Reserva> obtenerReservasPorClase(Long claseId) {
         return reservaRepository.findByClaseId(claseId);
     }
+
+    /**
+     * Obtiene una reserva específica para un cliente y una clase.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId ID de la clase.
+     * @return El objeto Reserva si existe, null en caso contrario.
+     */
+    @Override
+    public Reserva obtenerReservaPorClienteYClase(Long clienteId, Long claseId) {
+        return reservaRepository.findByClienteIdAndClaseId(clienteId, claseId).orElse(null);
+    }
 }

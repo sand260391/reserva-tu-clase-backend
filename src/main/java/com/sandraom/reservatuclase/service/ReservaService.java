@@ -36,4 +36,13 @@ public interface ReservaService {
      * @return Lista de reservas de la clase.
      */
     List<Reserva> obtenerReservasPorClase(Long claseId);
+
+    /**
+     * Obtiene una reserva específica para un cliente y una clase.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId ID de la clase.
+     * @return El objeto Reserva si existe, null en caso contrario.
+     */
+    Reserva obtenerReservaPorClienteYClase(Long clienteId, Long claseId);
 }

@@ -42,7 +42,7 @@ public class SecurityConfig {
                 .requestMatchers("/usuarios/me").permitAll()
                 .requestMatchers("/usuarios/**").hasRole("ADMIN")
                 .requestMatchers("/tipos-clase/**").hasRole("ADMIN")
-                .requestMatchers("/clases/**").hasAnyRole("ADMIN", "MONITOR")
+                .requestMatchers("/clases/**").hasAnyRole("ADMIN", "MONITOR", "CLIENTE")
                 .requestMatchers("/reservas/**").hasRole("CLIENTE")
                 .requestMatchers("/lista-espera/**").hasRole("CLIENTE")
                 .requestMatchers("/notificaciones/**").hasRole("CLIENTE")
