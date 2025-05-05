@@ -1,0 +1,9 @@
+com.sandraom.reservatuclase
+com.sandraom.reservatuclase.config
+com.sandraom.reservatuclase.controller
+com.sandraom.reservatuclase.dto
+com.sandraom.reservatuclase.model
+com.sandraom.reservatuclase.repository
+com.sandraom.reservatuclase.security
+com.sandraom.reservatuclase.service
+com.sandraom.reservatuclase.util
