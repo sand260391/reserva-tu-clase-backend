@@ -99,4 +99,31 @@ public class ListaEsperaController {
     public void eliminarDeListaEspera(@PathVariable Long id) {
         listaEsperaService.eliminarDeListaEspera(id);
     }
+
+    /**
+     * Verifica si un cliente ya está en la lista de espera de una clase específica.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId ID de la clase.
+     * @return Un objeto ListaEsperaDTO si el cliente está en la lista de espera, null en caso contrario.
+     */
+    @GetMapping("/verificar")
+    public ListaEsperaDTO verificarListaEspera(@RequestParam Long clienteId, @RequestParam Long claseId) {
+        ListaEspera listaEspera = listaEsperaService.obtenerListaEsperaPorClienteYClase(clienteId, claseId);
+        if (listaEspera != null) {
+            ListaEsperaDTO dto = new ListaEsperaDTO();
+            dto.setId(listaEspera.getId());
+            dto.setClaseHoraInicio(listaEspera.getClase().getHoraInicio());
+            dto.setClaseHoraFin(listaEspera.getClase().getHoraFin());
+            dto.setClaseNombre(listaEspera.getClase().getNombre());
+            dto.setClaseMonitor(listaEspera.getClase().getMonitor());
+            dto.setTipoClaseNombre(listaEspera.getClase().getTipoClase().getNombre());
+            dto.setPlazasReservadas(listaEspera.getClase().getReservas().size());
+            dto.setPlazasTotales(listaEspera.getClase().getCapacidadMaxima());
+            dto.setLongitudListaEspera(listaEspera.getClase().getListaEspera().size());
+            dto.setPosicionEnListaEspera(listaEspera.getPosicion());
+            return dto;
+        }
+        return null;
+    }
 }

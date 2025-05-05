@@ -84,8 +84,8 @@ public class ClaseController {
         dto.setHoraInicio(claseCreada.getHoraInicio());
         dto.setHoraFin(claseCreada.getHoraFin());
         dto.setCapacidadMaxima(claseCreada.getCapacidadMaxima());
-        dto.setPlazasReservadas(claseCreada.getReservas().size());
-        dto.setLongitudListaEspera(claseCreada.getListaEspera().size());
+        dto.setPlazasReservadas(0);
+        dto.setLongitudListaEspera(0);
         return dto;
     }
 

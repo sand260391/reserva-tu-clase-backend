@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Repositorio para gestionar las operaciones CRUD de la entidad ListaEspera.
@@ -30,4 +31,22 @@ public interface ListaEsperaRepository extends JpaRepository<ListaEspera, Long> 
      * @return una lista de inscripciones en lista de espera del cliente.
      */
     List<ListaEspera> findByClienteIdOrderByFechaInscripcionAsc(Long clienteId);
+
+    /**
+     * Verifica si existe una inscripción en la lista de espera para un cliente y una clase específicos.
+     *
+     * @param clienteId el ID del cliente.
+     * @param claseId el ID de la clase.
+     * @return true si existe la inscripción, false en caso contrario.
+     */
+    boolean existsByClienteIdAndClaseId(Long clienteId, Long claseId);
+
+    /**
+     * Encuentra un registro de lista de espera para un cliente y una clase específicos.
+     *
+     * @param clienteId el ID del cliente.
+     * @param claseId el ID de la clase.
+     * @return Un Optional con el objeto ListaEspera si existe, vacío en caso contrario.
+     */
+    Optional<ListaEspera> findByClienteIdAndClaseId(Long clienteId, Long claseId);
 }

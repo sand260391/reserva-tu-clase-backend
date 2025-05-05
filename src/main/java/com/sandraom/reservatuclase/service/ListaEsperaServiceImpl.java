@@ -98,4 +98,28 @@ public class ListaEsperaServiceImpl implements ListaEsperaService {
         // Llama al repositorio para eliminar el registro por su ID.
         listaEsperaRepository.deleteById(id);
     }
+
+    /**
+     * Verifica si un cliente está en la lista de espera de una clase específica.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId   ID de la clase.
+     * @return true si el cliente está en la lista de espera, false en caso contrario.
+     */
+    @Override
+    public boolean existeEnListaEspera(Long clienteId, Long claseId) {
+        return listaEsperaRepository.existsByClienteIdAndClaseId(clienteId, claseId);
+    }
+
+    /**
+     * Obtiene un registro de lista de espera para un cliente y una clase específicos.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId   ID de la clase.
+     * @return El registro de lista de espera, o null si no se encuentra.
+     */
+    @Override
+    public ListaEspera obtenerListaEsperaPorClienteYClase(Long clienteId, Long claseId) {
+        return listaEsperaRepository.findByClienteIdAndClaseId(clienteId, claseId).orElse(null);
+    }
 }

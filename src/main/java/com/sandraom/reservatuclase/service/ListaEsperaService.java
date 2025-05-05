@@ -37,4 +37,22 @@ public interface ListaEsperaService {
      * @param id ID del registro de lista de espera a eliminar.
      */
     void eliminarDeListaEspera(Long id);
+
+    /**
+     * Verifica si un cliente ya está en la lista de espera de una clase específica.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId ID de la clase.
+     * @return true si el cliente está en la lista de espera, false en caso contrario.
+     */
+    boolean existeEnListaEspera(Long clienteId, Long claseId);
+
+    /**
+     * Obtiene un registro de lista de espera para un cliente y una clase específicos.
+     *
+     * @param clienteId ID del cliente.
+     * @param claseId ID de la clase.
+     * @return La entidad ListaEspera si existe, null en caso contrario.
+     */
+    ListaEspera obtenerListaEsperaPorClienteYClase(Long clienteId, Long claseId);
 }
