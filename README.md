@@ -2,6 +2,9 @@
 
 ReservaTuClase es una aplicación desarrollada con Spring Boot que permite gestionar reservas de clases de manera eficiente.
 
+## Documentación en línea (Javadoc)
+https://sand260391.github.io/reserva-tu-clase-backend/
+
 ## Características
 
 - Gestión de reservas de clases.
