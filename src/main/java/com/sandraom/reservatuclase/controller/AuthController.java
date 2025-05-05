@@ -11,6 +11,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controlador para la autenticación y registro de usuarios.
+ * Proporciona endpoints para iniciar sesión y registrar nuevos usuarios.
+ */
 @RestController
 @RequestMapping("/auth")
 public class AuthController {

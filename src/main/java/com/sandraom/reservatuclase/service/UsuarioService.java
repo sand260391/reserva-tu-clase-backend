@@ -43,6 +43,14 @@ public interface UsuarioService {
     Optional<Usuario> obtenerUsuarioPorEmail(String email);
 
     /**
+     * Obtiene una lista de usuarios por su rol.
+     *
+     * @param rol El rol de los usuarios a buscar.
+     * @return Lista de usuarios con el rol especificado.
+     */
+    List<Usuario> obtenerUsuariosPorRol(Usuario.Rol rol);
+
+    /**
      * Elimina un usuario del sistema por su ID.
      *
      * @param id El ID del usuario a eliminar.
@@ -56,5 +64,13 @@ public interface UsuarioService {
      * @return El usuario actualizado.
      */
     Usuario actualizarUsuario(Usuario usuario);
+
+    /**
+     * Encripta una contraseña utilizando el codificador configurado.
+     *
+     * @param password La contraseña en texto plano.
+     * @return La contraseña encriptada.
+     */
+    String encriptarPassword(String password);
 }
 

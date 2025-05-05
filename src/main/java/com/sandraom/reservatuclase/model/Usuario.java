@@ -5,6 +5,7 @@ import lombok.*;
 
 /**
  * Representa un usuario del sistema.
+ * Puede tener diferentes roles como ADMIN, MONITOR o CLIENTE.
  */
 @Entity
 @Table(name = "usuarios")

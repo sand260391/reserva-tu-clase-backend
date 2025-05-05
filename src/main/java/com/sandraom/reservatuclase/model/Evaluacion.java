@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * Representa una evaluación realizada por un cliente sobre un tipo de clase.
+ * Contiene información sobre el cliente, el tipo de clase, el monitor, la calificación, el comentario y la fecha.
  */
 @Entity
 @Table(name = "evaluaciones")

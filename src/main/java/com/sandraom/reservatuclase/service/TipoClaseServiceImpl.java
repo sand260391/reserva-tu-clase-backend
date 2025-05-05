@@ -9,6 +9,10 @@ import com.sandraom.reservatuclase.repository.TipoClaseRepositorio;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación de la interfaz TipoClaseService.
+ * Proporciona la lógica de negocio para la gestión de los tipos de clase.
+ */
 @Service
 public class TipoClaseServiceImpl implements TipoClaseService {
 

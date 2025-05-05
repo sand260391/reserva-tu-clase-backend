@@ -9,6 +9,10 @@ import com.sandraom.reservatuclase.service.TipoClaseService;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controlador para gestionar los tipos de clase.
+ * Proporciona endpoints para CRUD de tipos de clase.
+ */
 @RestController
 @RequestMapping("/tipos-clase")
 public class TipoClaseController {

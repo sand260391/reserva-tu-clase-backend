@@ -9,11 +9,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Implementación del servicio para gestionar evaluaciones.
+ * Implementación del servicio para gestionar las operaciones relacionadas con las evaluaciones.
  */
 @Service
 public class EvaluacionServiceImpl implements EvaluacionService {
 
+    /**
+     * Repositorio para acceder a los datos de las evaluaciones.
+     */
     @Autowired
     private EvaluacionRepository evaluacionRepository;
 

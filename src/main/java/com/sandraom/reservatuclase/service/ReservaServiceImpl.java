@@ -14,6 +14,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación de la interfaz ReservaService.
+ * Proporciona la lógica de negocio para la gestión de reservas en el sistema.
+ */
 @Service
 public class ReservaServiceImpl implements ReservaService {
 

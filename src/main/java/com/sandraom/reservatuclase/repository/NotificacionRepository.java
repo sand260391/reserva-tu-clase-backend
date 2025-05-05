@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Repositorio para gestionar las operaciones CRUD de la entidad Notificacion.
+ * Proporciona métodos para interactuar con la base de datos de notificaciones.
  */
 @Repository
 public interface NotificacionRepository extends JpaRepository<Notificacion, Long> {

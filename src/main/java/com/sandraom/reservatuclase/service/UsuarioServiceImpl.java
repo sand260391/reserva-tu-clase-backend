@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación de la interfaz UsuarioService.
+ * Proporciona la lógica de negocio para la gestión de usuarios en el sistema.
+ */
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
@@ -64,6 +68,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     /**
+     * Obtiene una lista de usuarios por su rol.
+     *
+     * @param rol El rol de los usuarios a buscar.
+     * @return Lista de usuarios con el rol especificado.
+     */
+    @Override
+    public List<Usuario> obtenerUsuariosPorRol(Usuario.Rol rol) {
+        return usuarioRepository.findByRol(rol);
+    }
+
+    /**
      * Elimina un usuario por su ID.
      *
      * @param id ID del usuario a eliminar.
@@ -82,6 +97,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario actualizarUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
+    }
+
+    @Override
+    public String encriptarPassword(String password) {
+        return passwordEncoder.encode(password);
     }
 }
 

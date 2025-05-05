@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Representa una clase que puede ser reservada por los usuarios.
+ * Contiene información sobre el tipo de clase, monitor, sala, horarios, capacidad y reservas.
  */
 @Entity
 @Table(name = "clases")

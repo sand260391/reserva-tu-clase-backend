@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Representa un tipo de clase (e.g., yoga, pilates).
+ * Contiene información sobre el nombre y las clases asociadas.
  */
 @Entity
 @Table(name = "tipos_clases")

@@ -12,6 +12,10 @@ import java.util.Date;
 import java.util.function.Function;
 import javax.crypto.SecretKey;
 
+/**
+ * Clase utilitaria para la generación, validación y extracción de información de tokens JWT.
+ * Proporciona métodos para crear tokens, extraer información de ellos y validarlos.
+ */
 @Component
 public class JwtUtil {
 
@@ -98,7 +102,7 @@ public class JwtUtil {
             .subject(userDetails.getUsername())
             .claim("role", userDetails.getAuthorities().toString())
             .issuedAt(new Date(System.currentTimeMillis()))
-            .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hora
+            .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 3)) // 3 horas
             .signWith(getSigningKey(), Jwts.SIG.HS256)
             .compact();
     }

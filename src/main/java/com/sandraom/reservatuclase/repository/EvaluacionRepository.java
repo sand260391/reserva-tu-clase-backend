@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Repositorio para gestionar las operaciones CRUD de la entidad Evaluacion.
+ * Proporciona métodos para interactuar con la base de datos de evaluaciones.
  */
 @Repository
 public interface EvaluacionRepository extends JpaRepository<Evaluacion, Long> {

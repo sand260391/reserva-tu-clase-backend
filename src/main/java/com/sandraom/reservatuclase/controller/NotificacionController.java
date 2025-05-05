@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlador para gestionar las notificaciones.
+ * Proporciona endpoints para crear y consultar notificaciones.
+ */
 @RestController
 @RequestMapping("/notificaciones")
 public class NotificacionController {

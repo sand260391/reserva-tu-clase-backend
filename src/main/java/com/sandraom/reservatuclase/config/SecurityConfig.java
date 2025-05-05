@@ -39,8 +39,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/usuarios/registro").permitAll()
-                .requestMatchers("/usuarios/me").permitAll()
-                .requestMatchers("/usuarios/**").hasRole("ADMIN")
+                .requestMatchers("/usuarios/**").permitAll()
                 .requestMatchers("/tipos-clase/**").hasRole("ADMIN")
                 .requestMatchers("/clases/**").hasAnyRole("ADMIN", "MONITOR", "CLIENTE")
                 .requestMatchers("/reservas/**").hasRole("CLIENTE")

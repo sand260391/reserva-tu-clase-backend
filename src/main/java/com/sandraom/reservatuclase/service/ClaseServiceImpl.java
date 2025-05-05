@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Implementación del servicio para gestionar clases.
+ * Implementación del servicio para gestionar las operaciones relacionadas con las clases.
  */
 @Service
 public class ClaseServiceImpl implements ClaseService {
 
+    /**
+     * Repositorio para acceder a los datos de las clases.
+     */
     @Autowired
     private ClaseRepository claseRepository;
 

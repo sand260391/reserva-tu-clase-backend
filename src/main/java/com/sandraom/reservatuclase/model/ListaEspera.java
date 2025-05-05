@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * Representa una inscripción en la lista de espera para una clase.
+ * Contiene información sobre el cliente, la clase, la fecha de inscripción y la posición en la lista.
  */
 @Entity
 @Table(name = "listas_espera")

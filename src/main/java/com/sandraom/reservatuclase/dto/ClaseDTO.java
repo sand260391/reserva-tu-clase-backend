@@ -1,5 +1,8 @@
 package com.sandraom.reservatuclase.dto;
 
+/**
+ * DTO para representar los detalles de una clase.
+ */
 import lombok.Data;
 import java.time.LocalDateTime;
 import com.sandraom.reservatuclase.model.TipoClase;

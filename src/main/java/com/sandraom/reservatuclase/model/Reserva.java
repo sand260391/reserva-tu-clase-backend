@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * Representa una reserva realizada por un cliente para una clase.
+ * Contiene información sobre la clase reservada, el cliente y la fecha de la reserva.
  */
 @Entity
 @Table(name = "reservas")

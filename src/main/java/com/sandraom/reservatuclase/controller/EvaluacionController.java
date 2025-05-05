@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlador para gestionar las evaluaciones.
+ * Proporciona endpoints para crear, eliminar y consultar evaluaciones.
+ */
 @RestController
 @RequestMapping("/evaluaciones")
 public class EvaluacionController {

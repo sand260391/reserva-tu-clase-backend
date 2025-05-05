@@ -10,11 +10,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 /**
- * Servicio personalizado para cargar los detalles de un usuario.
+ * Servicio personalizado para cargar los detalles de los usuarios desde la base de datos.
  */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
+    /**
+     * Repositorio para acceder a los datos de los usuarios.
+     */
     @Autowired
     private UsuarioRepository usuarioRepository;
 

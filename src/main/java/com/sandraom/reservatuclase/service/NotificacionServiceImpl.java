@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Implementación de la interfaz NotificacionService.
+ * Proporciona la lógica de negocio para la gestión de notificaciones en el sistema.
+ */
 @Service
 public class NotificacionServiceImpl implements NotificacionService {
 

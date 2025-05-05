@@ -4,6 +4,10 @@ import com.sandraom.reservatuclase.model.Notificacion;
 
 import java.util.List;
 
+/**
+ * Interfaz que define los métodos para la gestión de notificaciones en el sistema.
+ * Proporciona operaciones para crear, obtener y actualizar notificaciones.
+ */
 public interface NotificacionService {
 
     /**

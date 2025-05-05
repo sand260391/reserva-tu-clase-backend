@@ -7,7 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
+/**
+ * Controlador para gestionar las clases.
+ * Proporciona endpoints para CRUD de clases y consulta de clases disponibles.
+ */
 @RestController
 @RequestMapping("/clases")
 public class ClaseController {
@@ -68,8 +73,20 @@ public class ClaseController {
      * @return La clase creada.
      */
     @PostMapping
-    public Clase crearClase(@RequestBody Clase clase) {
-        return claseService.crearClase(clase);
+    public ClaseDTO crearClase(@RequestBody Clase clase) {
+        Clase claseCreada = claseService.crearClase(clase);
+        ClaseDTO dto = new ClaseDTO();
+        dto.setId(claseCreada.getId());
+        dto.setNombre(claseCreada.getNombre());
+        dto.setTipoClase(claseCreada.getTipoClase());
+        dto.setMonitor(claseCreada.getMonitor());
+        dto.setSala(claseCreada.getSala());
+        dto.setHoraInicio(claseCreada.getHoraInicio());
+        dto.setHoraFin(claseCreada.getHoraFin());
+        dto.setCapacidadMaxima(claseCreada.getCapacidadMaxima());
+        dto.setPlazasReservadas(claseCreada.getReservas().size());
+        dto.setLongitudListaEspera(claseCreada.getListaEspera().size());
+        return dto;
     }
 
     /**
@@ -80,8 +97,21 @@ public class ClaseController {
      * @return La clase actualizada.
      */
     @PutMapping("/{id}")
-    public Clase actualizarClase(@PathVariable Long id, @RequestBody Clase clase) {
-        return claseService.actualizarClase(id, clase);
+    public ClaseDTO actualizarClase(@PathVariable Long id, @RequestBody Clase clase) {
+        Clase claseCreada = claseService.actualizarClase(id, clase);
+        ClaseDTO dto = new ClaseDTO();
+        dto.setId(claseCreada.getId());
+        dto.setNombre(claseCreada.getNombre());
+        dto.setTipoClase(claseCreada.getTipoClase());
+        dto.setMonitor(claseCreada.getMonitor());
+        dto.setSala(claseCreada.getSala());
+        dto.setHoraInicio(claseCreada.getHoraInicio());
+        dto.setHoraFin(claseCreada.getHoraFin());
+        dto.setCapacidadMaxima(claseCreada.getCapacidadMaxima());
+        dto.setPlazasReservadas(claseCreada.getReservas().size());
+        dto.setLongitudListaEspera(claseCreada.getListaEspera().size());
+        return dto;
+        
     }
 
     /**
@@ -92,5 +122,30 @@ public class ClaseController {
     @DeleteMapping("/{id}")
     public void eliminarClase(@PathVariable Long id) {
         claseService.eliminarClase(id);
+    }
+
+    /**
+     * Obtiene las clases disponibles (que no hayan comenzado aún).
+     *
+     * @return Lista de clases disponibles.
+     */
+    @GetMapping("/disponibles")
+    public List<ClaseDTO> obtenerClasesDisponibles() {
+        return claseService.obtenerTodasLasClases().stream()
+                .filter(clase -> clase.getHoraInicio().isAfter(LocalDateTime.now()))
+                .map(clase -> {
+                    ClaseDTO dto = new ClaseDTO();
+                    dto.setId(clase.getId());
+                    dto.setNombre(clase.getNombre());
+                    dto.setTipoClase(clase.getTipoClase());
+                    dto.setMonitor(clase.getMonitor());
+                    dto.setSala(clase.getSala());
+                    dto.setHoraInicio(clase.getHoraInicio());
+                    dto.setHoraFin(clase.getHoraFin());
+                    dto.setCapacidadMaxima(clase.getCapacidadMaxima());
+                    dto.setPlazasReservadas(clase.getReservas().size());
+                    dto.setLongitudListaEspera(clase.getListaEspera().size());
+                    return dto;
+                }).toList();
     }
 }

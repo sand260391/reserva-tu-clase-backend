@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * Representa una notificación enviada a un cliente.
+ * Contiene información sobre el cliente, el mensaje, la fecha de creación y si ha sido leída.
  */
 @Entity
 @Table(name = "notificaciones")

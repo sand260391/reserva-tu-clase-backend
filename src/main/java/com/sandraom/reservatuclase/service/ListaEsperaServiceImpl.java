@@ -12,15 +12,27 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Implementación del servicio para gestionar las operaciones relacionadas con la lista de espera.
+ */
 @Service
 public class ListaEsperaServiceImpl implements ListaEsperaService {
 
+    /**
+     * Repositorio para acceder a los datos de la lista de espera.
+     */
     @Autowired
     private ListaEsperaRepository listaEsperaRepository;
 
+    /**
+     * Repositorio para acceder a los datos de los usuarios.
+     */
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    /**
+     * Repositorio para acceder a los datos de las clases.
+     */
     @Autowired
     private ClaseRepository claseRepository;
 
@@ -34,6 +46,17 @@ public class ListaEsperaServiceImpl implements ListaEsperaService {
     public List<ListaEspera> obtenerListaEsperaPorClase(Long claseId) {
         // Llama al repositorio para obtener la lista de espera ordenada por posición.
         return listaEsperaRepository.findByClaseIdOrderByPosicionAsc(claseId);
+    }
+
+    /**
+     * Obtiene las inscripciones en lista de espera de un cliente específico.
+     *
+     * @param clienteId ID del cliente.
+     * @return Lista de inscripciones en lista de espera del cliente.
+     */
+    @Override
+    public List<ListaEspera> obtenerListaEsperaPorCliente(Long clienteId) {
+        return listaEsperaRepository.findByClienteIdOrderByFechaInscripcionAsc(clienteId);
     }
 
     /**

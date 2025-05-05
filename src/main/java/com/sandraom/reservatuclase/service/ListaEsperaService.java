@@ -15,6 +15,14 @@ public interface ListaEsperaService {
     List<ListaEspera> obtenerListaEsperaPorClase(Long claseId);
 
     /**
+     * Obtiene las inscripciones en lista de espera de un cliente específico.
+     *
+     * @param clienteId ID del cliente.
+     * @return Lista de inscripciones en lista de espera del cliente.
+     */
+    List<ListaEspera> obtenerListaEsperaPorCliente(Long clienteId);
+
+    /**
      * Agrega un cliente a la lista de espera de una clase.
      *
      * @param clienteId ID del cliente.

@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlador para gestionar las reservas.
+ * Proporciona endpoints para crear, cancelar y consultar reservas.
+ */
 @RestController
 @RequestMapping("/reservas")
 public class ReservaController {
@@ -32,6 +36,9 @@ public class ReservaController {
             dto.setClaseNombre(reserva.getClase().getNombre());
             dto.setClaseMonitor(reserva.getClase().getMonitor());
             dto.setTipoClaseNombre(reserva.getClase().getTipoClase().getNombre());
+            dto.setPlazasReservadas(reserva.getClase().getReservas().size());
+            dto.setPlazasTotales(reserva.getClase().getCapacidadMaxima());
+            dto.setLongitudListaEspera(reserva.getClase().getListaEspera().size());
             return dto;
         }).toList();
     }

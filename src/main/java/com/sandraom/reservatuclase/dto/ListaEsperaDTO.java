@@ -1,17 +1,16 @@
 package com.sandraom.reservatuclase.dto;
 
-/**
- * DTO para representar los detalles de una reserva.
- */
-
 import java.time.LocalDateTime;
 
 import com.sandraom.reservatuclase.model.Usuario;
 
 import lombok.Data;
 
+/**
+ * DTO para representar los detalles de una lista de espera.
+ */
 @Data
-public class ReservaDTO {
+public class ListaEsperaDTO {
     private Long id;
     private LocalDateTime claseHoraInicio;
     private LocalDateTime claseHoraFin;
@@ -21,4 +20,5 @@ public class ReservaDTO {
     private int plazasReservadas;
     private int plazasTotales;
     private int longitudListaEspera;
+    private int posicionEnListaEspera; // Nueva propiedad para la posición en la lista de espera
 }

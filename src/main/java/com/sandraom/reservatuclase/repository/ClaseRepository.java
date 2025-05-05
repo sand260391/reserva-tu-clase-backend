@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Repositorio para gestionar las operaciones CRUD de la entidad Clase.
+ * Proporciona métodos para interactuar con la base de datos de clases.
  */
 @Repository
 public interface ClaseRepository extends JpaRepository<Clase, Long> {
