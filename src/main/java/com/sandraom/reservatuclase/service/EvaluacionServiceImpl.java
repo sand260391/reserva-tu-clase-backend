@@ -43,6 +43,16 @@ public class EvaluacionServiceImpl implements EvaluacionService {
     }
 
     /**
+     * Obtiene todas las evaluaciones realizadas.
+     *
+     * @return una lista de todas las evaluaciones.
+     */
+    @Override
+    public List<Evaluacion> obtenerTodasLasEvaluaciones() {
+        return evaluacionRepository.findAll();
+    }
+
+    /**
      * Crea una nueva evaluación.
      * 
      * @param evaluacion la evaluación a crear.

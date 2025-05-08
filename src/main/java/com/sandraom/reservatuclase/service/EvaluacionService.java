@@ -26,6 +26,13 @@ public interface EvaluacionService {
     List<Evaluacion> obtenerEvaluacionesPorMonitor(Long monitorId);
 
     /**
+     * Obtiene todas las evaluaciones realizadas.
+     *
+     * @return una lista de todas las evaluaciones.
+     */
+    List<Evaluacion> obtenerTodasLasEvaluaciones();
+
+    /**
      * Crea una nueva evaluación.
      * 
      * @param evaluacion la evaluación a crear.

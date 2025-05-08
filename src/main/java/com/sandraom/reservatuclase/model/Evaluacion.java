@@ -44,7 +44,7 @@ public class Evaluacion {
     private Usuario monitor;
 
     /**
-     * Calificación otorgada (e.g., 1 a 5).
+     * Calificación otorgada (e.g., 1 a 10).
      */
     @Column(nullable = false)
     private int calificacion;

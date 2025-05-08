@@ -41,6 +41,16 @@ public class EvaluacionController {
     }
 
     /**
+     * Obtiene todas las evaluaciones realizadas.
+     *
+     * @return Lista de todas las evaluaciones.
+     */
+    @GetMapping
+    public List<Evaluacion> obtenerTodasLasEvaluaciones() {
+        return evaluacionService.obtenerTodasLasEvaluaciones();
+    }
+
+    /**
      * Crea una nueva evaluación.
      *
      * @param evaluacion Objeto Evaluacion con los datos de la nueva evaluación.

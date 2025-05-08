@@ -78,6 +78,16 @@ public class UsuarioController {
     }
 
     /**
+     * Endpoint para obtener todos los usuarios con el rol de CLIENTE.
+     *
+     * @return Lista de usuarios con el rol de CLIENTE.
+     */
+    @GetMapping("/clientes")
+    public List<Usuario> obtenerUsuariosConRolCliente() {
+        return usuarioService.obtenerUsuariosPorRol(Usuario.Rol.CLIENTE);
+    }
+
+    /**
      * Endpoint para eliminar un usuario por su ID.
      *
      * @param id ID del usuario a eliminar.
