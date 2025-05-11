@@ -21,4 +21,7 @@ public class ReservaDTO {
     private int plazasReservadas;
     private int plazasTotales;
     private int longitudListaEspera;
+    private String nombreCliente;
+    private String apellidosCliente;
+    private LocalDateTime fechaReserva;
 }

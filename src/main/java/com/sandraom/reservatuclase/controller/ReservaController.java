@@ -71,8 +71,23 @@ public class ReservaController {
      * @return Lista de reservas asociadas a la clase.
      */
     @GetMapping("/clase/{claseId}")
-    public List<Reserva> obtenerReservasPorClase(@PathVariable Long claseId) {
-        return reservaService.obtenerReservasPorClase(claseId);
+    public List<ReservaDTO> obtenerReservasPorClase(@PathVariable Long claseId) {
+        return reservaService.obtenerReservasPorClase(claseId).stream().map(reserva -> {
+            ReservaDTO dto = new ReservaDTO();
+            dto.setId(reserva.getId());
+            dto.setClaseHoraInicio(reserva.getClase().getHoraInicio());
+            dto.setClaseHoraFin(reserva.getClase().getHoraFin());
+            dto.setClaseNombre(reserva.getClase().getNombre());
+            dto.setClaseMonitor(reserva.getClase().getMonitor());
+            dto.setTipoClaseNombre(reserva.getClase().getTipoClase().getNombre());
+            dto.setPlazasReservadas(reserva.getClase().getReservas().size());
+            dto.setPlazasTotales(reserva.getClase().getCapacidadMaxima());
+            dto.setLongitudListaEspera(reserva.getClase().getListaEspera().size());
+            dto.setNombreCliente(reserva.getCliente().getNombre());
+            dto.setApellidosCliente(reserva.getCliente().getApellidos());
+            dto.setFechaReserva(reserva.getFechaReserva());
+            return dto;
+        }).toList();
     }
 
     /**
